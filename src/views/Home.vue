@@ -1,12 +1,10 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-  </div>
+  <router-view :key="$route.fullPath"></router-view>
 </template>
 
 <script>
 export default {
-  name: "home",
+  name: "Home",
   components: {}
 };
 </script>
