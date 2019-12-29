@@ -1,10 +1,11 @@
 <template>
-  <router-view :key="$route.fullPath"></router-view>
+  <Dashboard />
 </template>
 
 <script>
+import Dashboard from "./Dashboard";
 export default {
   name: "Home",
-  components: {}
+  components: { Dashboard }
 };
 </script>

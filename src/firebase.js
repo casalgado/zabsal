@@ -4,8 +4,6 @@ import moment from 'moment';
 
 moment.locale('es');
 
-console.log(process.env.VUE_APP_FIREBASE_API_KEY);
-
 firebase.initializeApp({
 	apiKey            : process.env.VUE_APP_FIREBASE_API_KEY,
 	authDomain        : 'zabsal.firebaseapp.com',
@@ -17,4 +15,31 @@ firebase.initializeApp({
 	measurementId     : process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
 });
 
-export const db = firebase.firestore();
+const db = firebase.firestore();
+const clients = db.collection('clientes');
+
+export { db, clients };
+
+export function fetchAll(collection) {
+	return new Promise(function(resolve) {
+		db
+			.collection(`${collection}`)
+			.get()
+			.then((snapshot) => {
+				let objects = [];
+				snapshot.forEach((doc) => {
+					objects.push(doc.data());
+				});
+				resolve(objects);
+			})
+			.catch((err) => {
+				console.log('Error getting documents', err);
+			});
+	});
+}
+
+export function add_from_array(array) {
+	for (let i = 0; i < array.length; i++) {
+		db.collection('clientes').doc().set(array[i]);
+	}
+}

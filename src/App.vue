@@ -30,9 +30,7 @@
     </v-app-bar>
 
     <v-content>
-      <v-container class="fill-height" fluid>
-        <Home />
-      </v-container>
+      <Home />
     </v-content>
 
     <v-footer color="secondary" app>
