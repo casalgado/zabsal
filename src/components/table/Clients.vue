@@ -15,12 +15,12 @@ export default {
         headers: [
           {
             text: "Nombres",
-            value: "first_name",
+            value: "nombres",
             sortable: true
           },
           {
             text: "Apellidos",
-            value: "last_name",
+            value: "apellidos",
             sortable: true
           },
           {
@@ -41,7 +41,6 @@ export default {
   methods: {
     getItems: function() {
       fetchAll("clientes").then(e => {
-        console.log(e);
         this.table.items = JSON.parse(JSON.stringify(e));
       });
     }

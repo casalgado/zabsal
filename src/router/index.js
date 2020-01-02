@@ -11,11 +11,25 @@ const routes = [
 		component : Home,
 		children  : [
 			{
+				path      : '/dashboard',
+				name      : 'dashboard',
+				component : () => import('../views/Dashboard.vue')
+			},
+			{
 				path      : '/vinculados',
 				name      : 'vinculados',
 				component : () => import('../components/table/Clients.vue')
 			},
-			{ path: '/console', name: 'console', component: () => import('../views/Console.vue') }
+			{
+				path      : '/console',
+				name      : 'console',
+				component : () => import('../views/Console.vue')
+			},
+			{
+				path      : '/crear',
+				name      : 'crear',
+				component : () => import('../components/form/Client.vue')
+			}
 		]
 	}
 ];

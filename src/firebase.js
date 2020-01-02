@@ -38,6 +38,47 @@ export function fetchAll(collection) {
 	});
 }
 
+export function fetchByDateRange(start, end) {
+	return new Promise(function(resolve) {
+		console.log(start);
+		console.log(end);
+		clients
+			.where('fin_contrato', '>', start)
+			.where('fin_contrato', '<', end)
+			.get()
+			.then((snapshot) => {
+				let objects = [];
+				snapshot.forEach((doc) => {
+					objects.push(doc.data());
+				});
+
+				resolve(objects);
+			})
+			.catch((err) => {
+				console.log('Error getting documents', err);
+			});
+	});
+}
+
+export function fetchByMonthBirth(month) {
+	return new Promise(function(resolve) {
+		clients
+			.where('mescumple', '==', month)
+			.get()
+			.then((snapshot) => {
+				let objects = [];
+				snapshot.forEach((doc) => {
+					objects.push(doc.data());
+				});
+
+				resolve(objects);
+			})
+			.catch((err) => {
+				console.log('Error getting documents', err);
+			});
+	});
+}
+
 export function add_from_array(array) {
 	for (let i = 0; i < array.length; i++) {
 		db.collection('clientes').doc().set(array[i]);
