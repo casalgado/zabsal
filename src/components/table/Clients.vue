@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { fetchAll } from "../../firebase";
 import RenderTable from "./RenderTable";
 export default {
@@ -10,6 +11,7 @@ export default {
   components: { RenderTable },
   data() {
     return {
+      setSalary: 0,
       table: {
         items: [],
         headers: [
@@ -33,10 +35,29 @@ export default {
             value: "ciudad",
             sortable: true
           },
-          { text: "id", value: "id", sortable: true }
+          {
+            text: "Sueldo",
+            value: "sueldo",
+            sortable: true,
+            filter: value => {
+              if (!this.setSalary) return true;
+
+              return value > parseInt(this.setSalary);
+            }
+          }
         ]
       }
     };
+  },
+  computed: mapState(["salary"]),
+  watch: {
+    salary() {
+      this.setSalary = this.$store.state.salary;
+      console.log(this.salary);
+    }
+  },
+  mounted() {
+    this.getItems();
   },
   methods: {
     getItems: function() {
@@ -44,9 +65,6 @@ export default {
         this.table.items = JSON.parse(JSON.stringify(e));
       });
     }
-  },
-  mounted() {
-    this.getItems();
   }
 };
 </script>

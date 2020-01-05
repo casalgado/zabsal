@@ -2,53 +2,75 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12" xs="12" sm="4">
-        <v-card class="pa-12" outlined tile>1</v-card>
+        <v-card class="pa-12" tile>{{ cityOptions }}</v-card>
       </v-col>
       <v-col cols="12" xs="12" sm="8">
         <v-container fluid>
           <v-row>
             <v-col cols="12" xs="12" sm="6">
-              <v-text-field v-model="first_names" label="Nombres" required outlined></v-text-field>
+              <v-text-field v-model="first_names" label="Nombres" required />
             </v-col>
             <v-col cols="12" xs="12" sm="6">
-              <v-text-field v-model="last_names" label="Apellidos" required outlined></v-text-field>
+              <v-text-field v-model="last_names" label="Apellidos" required />
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" xs="12" sm="4">
-              <v-select v-model="state" :items="states" label="Departamento" required outlined></v-select>
+              <v-select v-model="state" :items="states" label="Departamento" required />
             </v-col>
             <v-col cols="12" xs="12" sm="4">
-              <v-select v-model="city" :items="cities" label="Ciudad" required outlined></v-select>
+              <v-select
+                v-model="city"
+                :items="cityOptions"
+                label="Ciudad"
+                :required="this.state != 'Bogota'"
+                :disabled="this.state == 'Bogota'"
+              />
             </v-col>
             <v-col cols="12" xs="12" sm="4">
-              <v-select v-model="district" :items="districts" label="Localidad" required outlined></v-select>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" xs="12" sm="2">
-              <v-select v-model="state" :items="states" label="Tipo" required outlined></v-select>
-            </v-col>
-            <v-col cols="12" xs="12" sm="2">
-              <v-select v-model="city" :items="cities" label="Numero" required outlined></v-select>
-            </v-col>
-            <v-col cols="12" xs="12" sm="2">
               <v-select
                 v-model="district"
                 :items="districts"
-                label="Alfanumerico"
+                label="Localidad"
+                :required="this.city == 'Barranquilla'"
+                :disabled="this.city != 'Barranquilla'"
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" xs="12" sm="2">
+              <v-select v-model="road_type" :items="road_types" label="Tipo" required />
+            </v-col>
+            <v-col cols="12" xs="12" sm="2">
+              <v-text-field v-model="road_number_one" label="Numero" required />
+            </v-col>
+            <v-col cols="12" xs="12" sm="1">
+              <v-select
+                v-model="road_variants_one"
+                :items="road_variants"
+                label="Variante"
                 required
-                outlined
-              ></v-select>
+              />
+            </v-col>
+            <v-col cols="12" xs="12" sm="1">
+              <h4>#</h4>
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-select v-model="state" :items="states" label="Tipo" required outlined></v-select>
+              <v-text-field v-model="road_number_two" label="Numero" required />
+            </v-col>
+            <v-col cols="12" xs="12" sm="1">
+              <v-select
+                v-model="road_variants_two"
+                :items="road_variants"
+                label="Variante"
+                required
+              />
+            </v-col>
+            <v-col cols="12" xs="12" sm="1">
+              <h4>-</h4>
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-select v-model="city" :items="cities" label="Ciudad" required outlined></v-select>
-            </v-col>
-            <v-col cols="12" xs="12" sm="2">
-              <v-select v-model="district" :items="districts" label="Localidad" required outlined></v-select>
+              <v-text-field v-model="plaque_number" label="Numero" required />
             </v-col>
           </v-row>
         </v-container>
@@ -58,6 +80,14 @@
 </template>
 
 <script>
+import {
+  road_types,
+  road_variants,
+  road_variants_ext,
+  states,
+  cities,
+  districts
+} from "./options/address";
 export default {
   name: "Client",
   data() {
@@ -65,45 +95,36 @@ export default {
       first_names: "",
       last_names: "",
       state: "",
-      states: [
-        { text: "Atlantico", value: "atl" },
-        { text: "Bolivar", value: "blv" }
-      ],
+      states: states,
       city: "",
-      cities: [
-        { text: "Barranquilla", value: "1" },
-        { text: "Baranoa", value: "2" },
-        { text: "Candelaria", value: "3" },
-        { text: "Galapa", value: "4" },
-        { text: "Luruaco", value: "5" },
-        { text: "Malambo", value: "6" },
-        { text: "Manatí", value: "7" },
-        { text: "Piojó", value: "8" },
-        { text: "Polonuevo", value: "9" },
-        { text: "Sabanagrande", value: "10" },
-        { text: "Sabanalarga", value: "11" },
-        { text: "Santa Lucía", value: "12" },
-        { text: "Santo Tomás", value: "13" },
-        { text: "Soledad", value: "14" },
-        { text: "Suan", value: "15" },
-        { text: "Tubará", value: "16" },
-        { text: "Usiacurí", value: "17" },
-        { text: "Repelón", value: "18" },
-        { text: "Puerto Colombia", value: "19" },
-        { text: "Ponedera", value: "20" },
-        { text: "Juan de Acosta", value: "21" },
-        { text: "Palmar de Varela", value: "22" },
-        { text: "Campo de La Cruz", value: "23" }
-      ],
       district: "",
-      districts: [
-        { text: "Suroccidente", value: "1" },
-        { text: "Suroriente", value: "2" },
-        { text: "Norte - Centro Historico", value: "3" },
-        { text: "Metropolitana", value: "4" },
-        { text: "Riomar", value: "5" }
-      ]
+      districts: districts,
+      road_type: "",
+      road_types: road_types,
+      road_number_one: "",
+      road_variants_one: "",
+      road_variants_ext_one: "",
+      road_number_2: "",
+      road_variants_two: "",
+      road_variants_ext_two: "",
+      plaque_number: "",
+      road_variants: road_variants,
+      road_variants_ext: road_variants_ext
     };
+  },
+  computed: {
+    cityOptions() {
+      if (this.state == "") {
+        return [
+          ...cities.atlantico,
+          ...cities.cesar,
+          ...cities.magdalena,
+          "Bogota"
+        ];
+      } else {
+        return cities[this.state];
+      }
+    }
   }
 };
 </script>

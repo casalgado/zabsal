@@ -1,26 +1,54 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12" xs="12" sm="4">
-        <v-card class="pa-5" outlined tile>
+      <v-col
+        cols="12"
+        xs="12"
+        sm="4"
+      >
+        <v-card
+          class="pa-5"
+          outlined
+          tile
+        >
           <p>cumpleaños {{ thisMonth }}</p>
           <div
             v-for="client in this.birthdays"
             :key="client.id"
-          >{{ displayDate(client.nacimiento)}} - {{client.nombres}}</div>
+          >
+            {{ displayDate(client.nacimiento) }} - {{ client.nombres }}
+          </div>
         </v-card>
       </v-col>
-      <v-col cols="12" xs="12" sm="4">
-        <v-card class="pa-5" outlined tile>
+      <v-col
+        cols="12"
+        xs="12"
+        sm="4"
+      >
+        <v-card
+          class="pa-5"
+          outlined
+          tile
+        >
           <p>vencimiento contratos 1 trimestre 2020</p>
           <div
             v-for="client in this.expiring_soon"
             :key="client.id"
-          >{{ displayDate(client.fin_contrato)}} - {{client.nombres}}</div>
+          >
+            {{ displayDate(client.fin_contrato) }} - {{ client.nombres }}
+          </div>
         </v-card>
       </v-col>
-      <v-col cols="12" xs="12" sm="4">
-        <v-card class="pa-12" outlined tile></v-card>
+      <v-col
+        cols="12"
+        xs="12"
+        sm="4"
+      >
+        <v-card
+          class="pa-12"
+          outlined
+          tile
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -37,6 +65,14 @@ export default {
       expiring_soon: [],
       today: moment().format()
     };
+  },
+  computed: {
+    thisMonth() {
+      return moment().format("MMMM");
+    }
+  },
+  mounted() {
+    this.getItems();
   },
   methods: {
     getItems: function() {
@@ -65,14 +101,6 @@ export default {
     displayDate(string) {
       return moment(string, "X").format("DD MMM YYYY");
     }
-  },
-  computed: {
-    thisMonth() {
-      return moment().format("MMMM");
-    }
-  },
-  mounted() {
-    this.getItems();
   }
 };
 </script>

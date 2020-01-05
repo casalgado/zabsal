@@ -1,5 +1,7 @@
 <template>
-  <v-btn @click="import_data">import</v-btn>
+  <v-btn @click="import_data">
+    import
+  </v-btn>
 </template>
 
 <script>
