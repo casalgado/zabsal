@@ -16,9 +16,11 @@ firebase.initializeApp({
 });
 
 const db = firebase.firestore();
-const clients = db.collection('clientes');
+const clients = db.collection('clients');
+const socials = db.collection('socials');
+const family = db.collection('family');
 
-export { db, clients };
+export { db, clients, socials, family };
 
 export function fetchAll(collection) {
 	return new Promise(function(resolve) {
@@ -30,6 +32,26 @@ export function fetchAll(collection) {
 				snapshot.forEach((doc) => {
 					objects.push(doc.data());
 				});
+				resolve(objects);
+			})
+			.catch((err) => {
+				console.log('Error getting documents', err);
+			});
+	});
+}
+
+export function fetchById(collection, id) {
+	return new Promise(function(resolve) {
+		db
+			.collection(`${collection}`)
+			.where('client_id', '==', parseInt(id))
+			.get()
+			.then((snapshot) => {
+				let objects = [];
+				snapshot.forEach((doc) => {
+					objects.push(doc.data());
+				});
+				console.log(id);
 				resolve(objects);
 			})
 			.catch((err) => {

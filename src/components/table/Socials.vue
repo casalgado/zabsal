@@ -1,10 +1,13 @@
 <template>
-  <RenderTable :table="this.table" :client="true" />
+  <div>
+    <p>{{this.id}}</p>
+    <RenderTable :table="this.table" :client="false" />
+  </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import { fetchAll } from "../../firebase";
+import { fetchById } from "../../firebase";
 import RenderTable from "./RenderTable";
 export default {
   name: "Clients",
@@ -12,6 +15,7 @@ export default {
   data() {
     return {
       setSalary: 0,
+      id: this.$route.params.id,
       table: {
         items: [],
         headers: [
@@ -34,34 +38,18 @@ export default {
             text: "Ciudad",
             value: "ciudad",
             sortable: true
-          },
-          {
-            text: "Sueldo",
-            value: "sueldo",
-            sortable: true,
-            filter: value => {
-              if (!this.setSalary) return true;
-
-              return value > parseInt(this.setSalary);
-            }
           }
         ]
       }
     };
   },
   computed: mapState(["salary"]),
-  watch: {
-    salary() {
-      this.setSalary = this.$store.state.salary;
-      console.log(this.salary);
-    }
-  },
   mounted() {
     this.getItems();
   },
   methods: {
     getItems: function() {
-      fetchAll("clients").then(e => {
+      fetchById("socials", this.id).then(e => {
         this.table.items = JSON.parse(JSON.stringify(e));
       });
     }
