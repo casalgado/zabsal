@@ -26,6 +26,11 @@ const routes = [
 				component : () => import('../components/table/Socials.vue')
 			},
 			{
+				path      : '/familiares/:id',
+				name      : 'familiares',
+				component : () => import('../components/table/Family.vue')
+			},
+			{
 				path      : '/console',
 				name      : 'console',
 				component : () => import('../views/Console.vue')

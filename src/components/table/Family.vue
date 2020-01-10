@@ -1,5 +1,8 @@
 <template>
-  <RenderTable :table="this.table" :client="false" />
+  <div>
+    <p>{{this.id}}</p>
+    <RenderTable :table="this.table" :client="false" />
+  </div>
 </template>
 
 <script>
@@ -46,7 +49,7 @@ export default {
   },
   methods: {
     getItems: function() {
-      fetchById("socials", this.id).then(e => {
+      fetchById("family", this.id).then(e => {
         this.table.items = JSON.parse(JSON.stringify(e));
       });
     }

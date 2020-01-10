@@ -15,6 +15,7 @@
           <v-spacer />
         </v-card>
         <v-card class="pa-5" outlined tile>
+          <ContactButtons v-if="this.showButtons" />
           <div v-for="item in this.selected" :key="item.id">
             <div v-for="(value, name) in item" :key="value">
               <p>
@@ -42,8 +43,10 @@
 </template>
 
 <script>
+import ContactButtons from "./ContactButtons";
 export default {
   name: "RenderTable",
+  components: { ContactButtons },
   props: {
     table: Object,
     client: Boolean
@@ -58,6 +61,9 @@ export default {
   computed: {
     detail() {
       return this.selected;
+    },
+    showButtons() {
+      return this.selected.length != "0" && this.client;
     }
   },
   watch: {
