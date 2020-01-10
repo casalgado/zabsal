@@ -48,10 +48,10 @@ const road_variants_ext = [
 ];
 
 const states = [
-	{ text: 'Atlántico', value: 'Atlantico' },
-	{ text: 'Bogota', value: 'Bogota' },
-	{ text: 'Cesar', value: 'Cesar' },
-	{ text: 'Magdalena', value: 'Magdalena' }
+	{ text: 'Atlántico', value: 'atlantico' },
+	{ text: 'Bogota', value: 'bogota' },
+	{ text: 'Cesar', value: 'cesar' },
+	{ text: 'Magdalena', value: 'magdalena' }
 ];
 
 const cities = {

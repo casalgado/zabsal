@@ -2,6 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12" xs="12" sm="4">
+        <v-card class="pa-12" tile>{{ this.state }}</v-card>
         <v-card class="pa-12" tile>{{ cityOptions }}</v-card>
       </v-col>
       <v-col cols="12" xs="12" sm="8">
@@ -14,6 +15,7 @@
               <v-text-field v-model="last_names" label="Apellidos" required />
             </v-col>
           </v-row>
+
           <v-row>
             <v-col cols="12" xs="12" sm="4">
               <v-select v-model="state" :items="states" label="Departamento" required />
@@ -37,12 +39,19 @@
               />
             </v-col>
           </v-row>
+
           <v-row>
             <v-col cols="12" xs="12" sm="2">
-              <v-select v-model="road_type" :items="road_types" label="Tipo" required />
+              <v-select
+                v-model="road_type"
+                :items="road_types"
+                label="Tipo"
+                required
+                placeholder=" "
+              />
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-text-field v-model="road_number_one" label="Numero" required />
+              <v-text-field v-model="road_number_one" label="Numero" required placeholder=" " />
             </v-col>
             <v-col cols="12" xs="12" sm="1">
               <v-select
@@ -50,13 +59,14 @@
                 :items="road_variants"
                 label="Variante"
                 required
+                placeholder=" "
               />
             </v-col>
             <v-col cols="12" xs="12" sm="1">
               <h4>#</h4>
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-text-field v-model="road_number_two" label="Numero" required />
+              <v-text-field v-model="road_number_two" label="Numero" required placeholder=" " />
             </v-col>
             <v-col cols="12" xs="12" sm="1">
               <v-select
@@ -64,13 +74,14 @@
                 :items="road_variants"
                 label="Variante"
                 required
+                placeholder=" "
               />
             </v-col>
             <v-col cols="12" xs="12" sm="1">
               <h4>-</h4>
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-text-field v-model="plaque_number" label="Numero" required />
+              <v-text-field v-model="plaque_number" label="Numero" required placeholder=" " />
             </v-col>
           </v-row>
         </v-container>
@@ -104,7 +115,7 @@ export default {
       road_number_one: "",
       road_variants_one: "",
       road_variants_ext_one: "",
-      road_number_2: "",
+      road_number_two: "",
       road_variants_two: "",
       road_variants_ext_two: "",
       plaque_number: "",
