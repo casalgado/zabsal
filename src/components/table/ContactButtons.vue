@@ -6,16 +6,18 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "ContactButtons",
   methods: {
     socials: function() {
-      console.log("socials");
+      this.$router.push({ name: "sociales", params: { id: this.userID } });
     },
     family: function() {
-      console.log("family");
+      this.$router.push({ name: "familiares", params: { id: this.userID } });
     }
-  }
+  },
+  computed: mapState(["userID"])
 };
 </script>
 

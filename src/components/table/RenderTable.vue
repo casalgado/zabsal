@@ -69,6 +69,11 @@ export default {
   watch: {
     salary() {
       this.$store.commit("setSalary", parseInt(this.salary));
+    },
+    selected() {
+      if (this.selected.length > 0) {
+        this.$store.commit("setUserID", this.selected[0].id);
+      }
     }
   }
 };

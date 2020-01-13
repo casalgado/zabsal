@@ -60,6 +60,25 @@ export function fetchById(collection, id) {
 	});
 }
 
+export function getClientName(id) {
+	return new Promise(function(resolve) {
+		db
+			.collection(`clients`)
+			.where('id', '==', parseInt(id))
+			.get()
+			.then((snapshot) => {
+				let objects = [];
+				snapshot.forEach((doc) => {
+					objects.push(doc.data());
+				});
+				resolve(objects[0]);
+			})
+			.catch((err) => {
+				console.log('Error getting documents', err);
+			});
+	});
+}
+
 export function fetchByDateRange(start, end) {
 	return new Promise(function(resolve) {
 		console.log(start);

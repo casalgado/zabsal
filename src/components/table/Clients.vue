@@ -53,11 +53,14 @@ export default {
   watch: {
     salary() {
       this.setSalary = this.$store.state.salary;
-      console.log(this.salary);
     }
   },
   mounted() {
     this.getItems();
+    this.$store.commit("setTitle", "Vinculados");
+  },
+  destroyed() {
+    this.$store.commit("setTitle", "Base de Datos");
   },
   methods: {
     getItems: function() {

@@ -1,14 +1,13 @@
 <template>
-  <div>
-    <p>{{this.id}}</p>
-    <RenderTable :table="this.table" :client="false" />
-  </div>
+  <RenderTable :table="this.table" :client="false" />
 </template>
 
 <script>
 import { mapState } from "vuex";
 import { fetchById } from "../../firebase";
 import RenderTable from "./RenderTable";
+import { getClientName } from "../../firebase";
+
 export default {
   name: "Clients",
   components: { RenderTable },
@@ -46,6 +45,12 @@ export default {
   computed: mapState(["salary"]),
   mounted() {
     this.getItems();
+    getClientName(this.id).then(e => {
+      this.$store.commit("setTitle", `${e.nombres} ${e.apellidos}`);
+    });
+  },
+  destroyed() {
+    this.$store.commit("setTitle", "Base de Datos");
   },
   methods: {
     getItems: function() {
