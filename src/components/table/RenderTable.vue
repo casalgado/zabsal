@@ -17,7 +17,7 @@
         <v-card class="pa-5" outlined tile>
           <ContactButtons v-if="this.showButtons" />
           <div v-for="item in this.selected" :key="item.id">
-            <div v-for="(value, name) in item" :key="value">
+            <div v-for="(value, name) in item" :key="name">
               <p>
                 <strong>{{ name }}:</strong>
                 {{ value }}

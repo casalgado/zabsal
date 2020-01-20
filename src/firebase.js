@@ -60,7 +60,7 @@ export function fetchById(collection, id) {
 	});
 }
 
-export function getClientName(id) {
+export function getClient(id) {
 	return new Promise(function(resolve) {
 		db
 			.collection(`clients`)

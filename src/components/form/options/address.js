@@ -1,25 +1,25 @@
 export { road_types, road_variants, road_variants_ext, states, cities, districts };
 
 const road_types = [
-	{ text: 'Calle', value: 'CL' },
-	{ text: 'Carrera', value: 'KR' },
-	{ text: 'Autopista', value: 'AU' },
-	{ text: 'Avenida', value: 'AV' },
-	{ text: 'Avenida Calle', value: 'AC' },
-	{ text: 'Avenida Carrera', value: 'AK' },
-	{ text: 'Bulevar', value: 'BL' },
-	{ text: 'Carretera', value: 'CT' },
-	{ text: 'Circular', value: 'CQ' },
-	{ text: 'Circunvalar', value: 'CV' },
-	{ text: 'Cuentas Corridas', value: 'CC' },
-	{ text: 'Diagonal', value: 'DG' },
-	{ text: 'Pasaje', value: 'PJ' },
-	{ text: 'Paseo', value: 'PS' },
-	{ text: 'Peatonal', value: 'PT' },
-	{ text: 'Transversal', value: 'TV' },
-	{ text: 'Troncal', value: 'TC' },
-	{ text: 'Variante', value: 'VT' },
-	{ text: 'Via', value: 'VI' }
+	{ text: 'calle', value: 'calle' },
+	{ text: 'carrera', value: 'carrera' },
+	{ text: 'autopista', value: 'autopista' },
+	{ text: 'avenida', value: 'avenida' },
+	{ text: 'avenida calle', value: 'avenida calle' },
+	{ text: 'avenida carrera', value: 'avenida carrera' },
+	{ text: 'bulevar', value: 'bulevar' },
+	{ text: 'carretera', value: 'carretera' },
+	{ text: 'circular', value: 'circular' },
+	{ text: 'circunvalar', value: 'circunvalar' },
+	{ text: 'cuentas corridas', value: 'cuentas corridas' },
+	{ text: 'diagonal', value: 'diagonal' },
+	{ text: 'pasaje', value: 'pasaje' },
+	{ text: 'paseo', value: 'paseo' },
+	{ text: 'peatonal', value: 'peatonal' },
+	{ text: 'transversal', value: 'transversal' },
+	{ text: 'troncal', value: 'troncal' },
+	{ text: 'variante', value: 'variante' },
+	{ text: 'via', value: 'via' }
 ];
 
 const road_variants = [

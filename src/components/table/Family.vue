@@ -6,7 +6,7 @@
 import { mapState } from "vuex";
 import { fetchById } from "../../firebase";
 import RenderTable from "./RenderTable";
-import { getClientName } from "../../firebase";
+import { getClient } from "../../firebase";
 
 export default {
   name: "Clients",
@@ -45,7 +45,7 @@ export default {
   computed: mapState(["salary"]),
   mounted() {
     this.getItems();
-    getClientName(this.id).then(e => {
+    getClient(this.id).then(e => {
       this.$store.commit("setTitle", `${e.nombres} ${e.apellidos}`);
     });
   },
