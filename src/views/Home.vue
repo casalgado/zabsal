@@ -5,6 +5,11 @@
 <script>
 export default {
   name: "Home",
-  components: {}
+  components: {},
+  mounted() {
+    if (this.$route.path == "/") {
+      this.$router.push({ name: "dashboard" });
+    }
+  }
 };
 </script>

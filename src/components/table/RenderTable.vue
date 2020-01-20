@@ -5,14 +5,14 @@
         <v-card class="pa-12" outlined tile>
           <v-text-field v-model="searchInput" label="Buscar" single-line hide-details />
 
-          <v-text-field
+          <!-- <v-text-field
             v-if="this.client"
             v-model="salary"
             label="Salario Mayor A"
             single-line
             hide-details
           />
-          <v-spacer />
+          <v-spacer />-->
         </v-card>
         <v-card class="pa-5" outlined tile>
           <ContactButtons v-if="this.showButtons" />

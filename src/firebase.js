@@ -81,8 +81,6 @@ export function getClient(id) {
 
 export function fetchByDateRange(start, end) {
 	return new Promise(function(resolve) {
-		console.log(start);
-		console.log(end);
 		clients
 			.where('fin_contrato', '>', start)
 			.where('fin_contrato', '<', end)

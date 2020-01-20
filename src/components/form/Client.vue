@@ -8,36 +8,58 @@
         <v-container fluid id="form">
           <v-row>
             <v-col cols="12" xs="12" sm="4">
-              <v-text-field v-model="first_names" label="Nombres" required />
+              <v-text-field v-model="first_names" dense label="Nombres" required />
             </v-col>
             <v-col cols="12" xs="12" sm="4">
-              <v-text-field v-model="last_names" label="Apellidos" required />
+              <v-text-field v-model="last_names" dense label="Apellidos" required />
             </v-col>
             <v-col cols="12" xs="12" sm="4">
-              <v-text-field v-model="id_number" label="Cedula" required />
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col cols="12" xs="12" sm="4">
-              <v-select v-model="day_of_birth" :items="days" label="Dia" required placeholder />
-            </v-col>
-            <v-col cols="12" xs="12" sm="4">
-              <v-select v-model="month_of_birth" :items="months" label="Mes" required placeholder />
-            </v-col>
-            <v-col cols="12" xs="12" sm="4">
-              <v-select v-model="year_of_birth" :items="years" label="Año" required placeholder />
+              <v-text-field v-model="id_number" dense label="Cedula" required />
             </v-col>
           </v-row>
 
           <v-row>
             <v-col cols="12" xs="12" sm="4">
-              <v-select v-model="state" :items="states" label="Departamento" required />
+              <v-select
+                v-model="day_of_birth"
+                :items="days"
+                dense
+                label="Dia"
+                required
+                placeholder
+              />
+            </v-col>
+            <v-col cols="12" xs="12" sm="4">
+              <v-select
+                v-model="month_of_birth"
+                :items="months"
+                dense
+                label="Mes"
+                required
+                placeholder
+              />
+            </v-col>
+            <v-col cols="12" xs="12" sm="4">
+              <v-select
+                v-model="year_of_birth"
+                :items="years"
+                dense
+                label="Año"
+                required
+                placeholder
+              />
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col cols="12" xs="12" sm="4">
+              <v-select v-model="state" :items="states" dense label="Departamento" required />
             </v-col>
             <v-col cols="12" xs="12" sm="4">
               <v-select
                 v-model="city"
                 :items="cityOptions"
+                dense
                 label="Ciudad"
                 :required="this.state != 'Bogota'"
                 :disabled="this.state == 'Bogota'"
@@ -47,6 +69,7 @@
               <v-select
                 v-model="district"
                 :items="districts"
+                dense
                 label="Localidad"
                 :required="this.city == 'Barranquilla'"
                 :disabled="this.city != 'Barranquilla'"
@@ -59,18 +82,26 @@
               <v-select
                 v-model="road_type"
                 :items="road_types"
+                dense
                 label="Tipo"
                 required
                 placeholder=" "
               />
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-text-field v-model="road_number_one" label="Numero" required placeholder=" " />
+              <v-text-field
+                v-model="road_number_one"
+                dense
+                label="Numero"
+                required
+                placeholder=" "
+              />
             </v-col>
             <v-col cols="12" xs="12" sm="1">
               <v-select
                 v-model="road_variants_one"
                 :items="road_variants"
+                dense
                 label="Variante"
                 required
                 placeholder=" "
@@ -80,12 +111,19 @@
               <h4>#</h4>
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-text-field v-model="road_number_two" label="Numero" required placeholder=" " />
+              <v-text-field
+                v-model="road_number_two"
+                dense
+                label="Numero"
+                required
+                placeholder=" "
+              />
             </v-col>
             <v-col cols="12" xs="12" sm="1">
               <v-select
                 v-model="road_variants_two"
                 :items="road_variants"
+                dense
                 label="Variante"
                 required
                 placeholder=" "
@@ -95,21 +133,21 @@
               <h4>-</h4>
             </v-col>
             <v-col cols="12" xs="12" sm="2">
-              <v-text-field v-model="plaque_number" label="Numero" required placeholder=" " />
+              <v-text-field v-model="plaque_number" dense label="Numero" required placeholder=" " />
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" xs="12" sm="3">
-              <v-text-field v-model="company" label="Empresa" required placeholder />
+              <v-text-field v-model="company" dense label="Empresa" required placeholder />
             </v-col>
             <v-col cols="12" xs="12" sm="3">
-              <v-select v-model="job_position" :items="job_positions" label="cargo" required />
+              <v-select v-model="job_position" :items="job_positions" dense label="cargo" required />
             </v-col>
             <v-col cols="12" xs="12" sm="3">
-              <v-text-field v-model="salary" label="salario" required placeholder />
+              <v-text-field v-model="salary" dense label="salario" required placeholder />
             </v-col>
             <v-col cols="12" xs="12" sm="3">
-              <v-select v-model="vehicle" :items="vehicles" label="vehiculo" required />
+              <v-select v-model="vehicle" :items="vehicles" dense label="vehiculo" required />
             </v-col>
           </v-row>
           <v-row>
@@ -117,6 +155,7 @@
               <v-select
                 v-model="contract_month_start"
                 :items="months"
+                dense
                 label="Mes Inicio"
                 required
                 placeholder
@@ -126,6 +165,7 @@
               <v-select
                 v-model="contract_year_start"
                 :items="years"
+                dense
                 label="Año Inicio"
                 required
                 placeholder
@@ -135,6 +175,7 @@
               <v-select
                 v-model="contract_month_end"
                 :items="months"
+                dense
                 label="Mes Fin"
                 required
                 placeholder
@@ -144,6 +185,7 @@
               <v-select
                 v-model="contract_year_end"
                 :items="years"
+                dense
                 label="Año Fin"
                 required
                 placeholder
@@ -269,4 +311,7 @@ export default {
 </script>
 
 <style>
+h4 {
+  margin-top: 15px;
+}
 </style>

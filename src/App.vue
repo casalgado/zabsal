@@ -16,12 +16,24 @@
 
         <v-list-item link>
           <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
+            <v-icon>mdi-account-multiple</v-icon>
           </v-list-item-action>
 
           <v-list-item-content>
             <v-list-item-title>
               <router-link to="/vinculados">Vinculados</router-link>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-account-plus</v-icon>
+          </v-list-item-action>
+
+          <v-list-item-content>
+            <v-list-item-title>
+              <router-link to="/crear">Crear Vinculado</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>

@@ -48,7 +48,7 @@ export default {
     this.getItems();
 
     getClient(this.id).then(e => {
-      this.$store.commit("setTitle", `${e.nombres} ${e.apellidos}`);
+      this.$store.commit("setTitle", `${e.nombres} ${e.apellidos} - Sociales`);
     });
   },
   destroyed() {
