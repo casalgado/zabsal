@@ -27,7 +27,6 @@ export default {
 
       for (let i = 0; i < array.length; i++) {
         // clients.doc().set(array[i]);
-        console.log(i);
       }
     },
     import_socials: function() {
