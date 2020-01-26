@@ -267,7 +267,8 @@ export default {
       contract_year_start: "",
       contract_month_start: "",
       contract_year_end: "",
-      contract_month_end: ""
+      contract_month_end: "",
+      client_id: ""
     };
   },
   computed: {
@@ -296,7 +297,8 @@ export default {
         m_i_contrato: this.contract_month_start,
         a_i_contrato: this.contract_year_start,
         m_f_contrato: this.contract_month_end,
-        a_f_contrato: this.contract_month_end
+        a_f_contrato: this.contract_month_end,
+        client_id: this.client_id
       };
     },
     cityOptions() {

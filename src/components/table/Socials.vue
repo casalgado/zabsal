@@ -52,9 +52,7 @@ export default {
     });
   },
   destroyed() {
-    this.$store.commit("setTitle", "Base de Datos");
     this.$store.commit("setSelectedUserId", null);
-    this.$store.commit("setActiveUserId", null);
   },
   methods: {
     getItems: function() {

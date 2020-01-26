@@ -19,8 +19,9 @@ const db = firebase.firestore();
 const clients = db.collection('clients');
 const socials = db.collection('socials');
 const family = db.collection('family');
+const friends = db.collection('friends');
 
-export { db, clients, socials, family };
+export { db, clients, socials, family, friends };
 
 export function fetchAll(collection) {
 	return new Promise(function(resolve) {

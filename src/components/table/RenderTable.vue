@@ -60,6 +60,9 @@ export default {
     };
   },
   computed: {
+    active() {
+      return this.$store.state.active;
+    },
     add_button() {
       return this.type == "family" || this.type == "social";
     },
@@ -72,7 +75,11 @@ export default {
   },
   methods: {
     add: function() {
-      console.log(this.id);
+      this.$router.push({
+        name: "crear_social",
+        params: { id: this.active }
+      });
+      // this.$router.push({ path: `/sociales/${this.active}/crear` });
     }
   },
   watch: {
