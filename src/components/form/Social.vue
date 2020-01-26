@@ -1,11 +1,11 @@
 <template>
-  <RenderForm :type="'client'" :show_contract="true" />
+  <RenderForm :type="'social'" :show_contract="false" />
 </template>
 
 <script>
 import RenderForm from "./RenderForm";
 export default {
-  name: "Client",
+  name: "Social",
   components: { RenderForm },
   data() {
     return {};

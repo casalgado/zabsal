@@ -5,9 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state     : {
-		salary : 0,
-		title  : 'Base de Datos',
-		userID : 0
+		salary   : 0,
+		title    : 'Base de Datos',
+		selected : null,
+		active   : null
 	},
 	mutations : {
 		setSalary(state, payload) {
@@ -16,8 +17,11 @@ export default new Vuex.Store({
 		setTitle(state, payload) {
 			state.title = payload;
 		},
-		setUserID(state, payload) {
-			state.userID = payload;
+		setSelectedUserId(state, payload) {
+			state.selected = payload;
+		},
+		setActiveUserId(state, payload) {
+			state.active = payload;
 		}
 	},
 	actions   : {},

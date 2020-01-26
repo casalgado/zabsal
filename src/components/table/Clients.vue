@@ -1,5 +1,5 @@
 <template>
-  <RenderTable :table="this.table" :client="true" />
+  <RenderTable :table="this.table" :type="'client'" />
 </template>
 
 <script>
@@ -36,8 +36,8 @@ export default {
             sortable: true
           },
           {
-            text: "Sueldo",
-            value: "sueldo",
+            text: "Salario",
+            value: "salario",
             sortable: true,
             filter: value => {
               if (!this.setSalary) return true;

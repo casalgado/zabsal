@@ -26,6 +26,11 @@ const routes = [
 				component : () => import('../components/table/Socials.vue')
 			},
 			{
+				path      : '/sociales/:id/crear',
+				name      : 'crear_social',
+				component : () => import('../components/form/Social.vue')
+			},
+			{
 				path      : '/familiares/:id',
 				name      : 'familiares',
 				component : () => import('../components/table/Family.vue')
@@ -36,9 +41,14 @@ const routes = [
 				component : () => import('../views/Console.vue')
 			},
 			{
-				path      : '/crear',
-				name      : 'crear',
+				path      : '/crear/vinculado',
+				name      : 'crear_vinculado',
 				component : () => import('../components/form/Client.vue')
+			},
+			{
+				path      : '/crear/amigo',
+				name      : 'crear_amigo',
+				component : () => import('../components/form/Friend.vue')
 			}
 		]
 	}

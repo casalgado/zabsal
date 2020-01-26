@@ -33,7 +33,19 @@
 
           <v-list-item-content>
             <v-list-item-title>
-              <router-link to="/crear">Crear Vinculado</router-link>
+              <router-link to="/crear/vinculado">Crear Vinculado</router-link>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-account-plus</v-icon>
+          </v-list-item-action>
+
+          <v-list-item-content>
+            <v-list-item-title>
+              <router-link to="/crear/amigo">Crear Amigo</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>

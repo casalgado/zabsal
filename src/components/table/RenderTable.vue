@@ -6,7 +6,7 @@
           <v-text-field v-model="searchInput" label="Buscar" single-line hide-details />
 
           <!-- <v-text-field
-            v-if="this.client"
+            v-if="this.type == 'client'"
             v-model="salary"
             label="Salario Mayor A"
             single-line
@@ -15,15 +15,16 @@
           <v-spacer />-->
         </v-card>
         <v-card class="pa-5" outlined tile>
-          <ContactButtons v-if="this.showButtons" />
-          <div v-for="item in this.selected" :key="item.id">
+          <ContactButtons v-if="this.show_contact_buttons" />
+          <v-btn v-if="add_button" class="localbtn" @click="add">agregar</v-btn>
+          <!-- <div v-for="item in this.selected" :key="item.id">
             <div v-for="(value, name) in item" :key="name">
               <p>
                 <strong>{{ name }}:</strong>
                 {{ value }}
               </p>
             </div>
-          </div>
+          </div>-->
         </v-card>
       </v-col>
       <v-col cols="12" xs="12" sm="8">
@@ -49,7 +50,7 @@ export default {
   components: { ContactButtons },
   props: {
     table: Object,
-    client: Boolean
+    type: String
   },
   data() {
     return {
@@ -59,11 +60,19 @@ export default {
     };
   },
   computed: {
+    add_button() {
+      return this.type == "family" || this.type == "social";
+    },
     detail() {
       return this.selected;
     },
-    showButtons() {
-      return this.selected.length != "0" && this.client;
+    show_contact_buttons() {
+      return this.selected.length != "0" && this.type == "client";
+    }
+  },
+  methods: {
+    add: function() {
+      console.log(this.id);
     }
   },
   watch: {
@@ -72,7 +81,7 @@ export default {
     },
     selected() {
       if (this.selected.length > 0) {
-        this.$store.commit("setUserID", this.selected[0].id);
+        this.$store.commit("setSelectedUserId", this.selected[0].id);
       }
     }
   }
