@@ -79,8 +79,10 @@ export default {
   },
   methods: {
     add: function() {
+      let name =
+        this.collection == "socials" ? "crear_social" : "crear_familiar";
       this.$router.push({
-        name: "crear_social",
+        name: name,
         params: { id: this.active }
       });
     },

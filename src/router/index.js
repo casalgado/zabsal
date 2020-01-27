@@ -41,6 +41,11 @@ const routes = [
 				component : () => import('../components/table/Family.vue')
 			},
 			{
+				path      : '/familiares/:id/crear',
+				name      : 'crear_familiar',
+				component : () => import('../components/form/Family.vue')
+			},
+			{
 				path      : '/console',
 				name      : 'console',
 				component : () => import('../views/Console.vue')
