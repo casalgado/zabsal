@@ -1,20 +1,17 @@
 <template>
-  <RenderTable :table="this.table" :collection="'family'" />
+  <RenderTable :table="this.table" :collection="'friends'" />
 </template>
 
 <script>
 import { mapState } from "vuex";
-import { fetchByClientId } from "../../firebase";
+import { fetchAll } from "../../firebase";
 import RenderTable from "./RenderTable";
-import { getClient } from "../../firebase";
-
 export default {
-  name: "Family",
+  name: "Friends",
   components: { RenderTable },
   data() {
     return {
       setSalary: 0,
-      id: this.$route.params.id,
       table: {
         items: [],
         headers: [
@@ -37,27 +34,37 @@ export default {
             text: "Ciudad",
             value: "ciudad",
             sortable: true
+          },
+          {
+            text: "Salario",
+            value: "salario",
+            sortable: true,
+            filter: value => {
+              if (!this.setSalary) return true;
+
+              return value > parseInt(this.setSalary);
+            }
           }
         ]
       }
     };
   },
   computed: mapState(["salary"]),
+  watch: {
+    salary() {
+      this.setSalary = this.$store.state.salary;
+    }
+  },
   mounted() {
     this.getItems();
-    getClient(this.id).then(e => {
-      this.$store.commit(
-        "setTitle",
-        `${e.nombres} ${e.apellidos} - Familiares`
-      );
-    });
+    this.$store.commit("setTitle", "Vinculados");
   },
   destroyed() {
-    this.$store.commit("setSelectedUserId", null);
+    this.$store.commit("setTitle", "Base de Datos");
   },
   methods: {
     getItems: function() {
-      fetchByClientId("family", this.id).then(e => {
+      fetchAll("friends").then(e => {
         this.table.items = JSON.parse(JSON.stringify(e));
       });
     }

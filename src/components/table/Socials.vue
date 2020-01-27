@@ -9,7 +9,7 @@ import RenderTable from "./RenderTable";
 import { getClient } from "../../firebase";
 
 export default {
-  name: "Clients",
+  name: "Socials",
   components: { RenderTable },
   data() {
     return {

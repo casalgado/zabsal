@@ -21,6 +21,11 @@ const routes = [
 				component : () => import('../components/table/Clients.vue')
 			},
 			{
+				path      : '/amigos',
+				name      : 'vinculados',
+				component : () => import('../components/table/Friends.vue')
+			},
+			{
 				path      : '/sociales/:id',
 				name      : 'sociales',
 				component : () => import('../components/table/Socials.vue')

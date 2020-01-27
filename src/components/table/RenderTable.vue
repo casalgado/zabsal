@@ -16,7 +16,7 @@
         </v-card>
         <v-card class="pa-5" outlined tile>
           <ContactButtons v-if="this.show_contact_buttons" />
-          <v-btn v-if="add_button" class="localbtn" @click="add">agregar</v-btn>
+          <v-btn v-if="add_button" class="localbtn" @click="add">agregar contacto</v-btn>
           <v-btn v-if="this.show_edit_button" class="localbtn" @click="edit">editar</v-btn>
           <!-- <div v-for="item in this.selected" :key="item.id">
             <div v-for="(value, name) in item" :key="name">

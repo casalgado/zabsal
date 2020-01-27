@@ -173,7 +173,7 @@
             <v-col cols="12" xs="12" sm="3">
               <v-select
                 v-model="contract_year_start"
-                :items="years"
+                :items="contract_years"
                 dense
                 label="Año Inicio"
                 required
@@ -193,7 +193,7 @@
             <v-col cols="12" xs="12" sm="3">
               <v-select
                 v-model="contract_year_end"
-                :items="years"
+                :items="contract_years"
                 dense
                 label="Año Fin"
                 required
@@ -203,7 +203,7 @@
           </v-row>
 
           <v-row>
-            <v-btn class="primary" @click="submit">Crear Vinculado</v-btn>
+            <v-btn class="primary" @click="submit">{{this.submitButton}}</v-btn>
           </v-row>
         </v-container>
       </v-col>
@@ -220,7 +220,7 @@ import {
   cities,
   districts
 } from "./options/address";
-import { days, months, years } from "./options/dates";
+import { days, months, years, contract_years } from "./options/dates";
 import { education_levels, vehicles, job_positions } from "./options/personal";
 import { db, fetchById } from "../../firebase";
 export default {
@@ -266,6 +266,7 @@ export default {
       job_positions: job_positions,
       company: "",
       salary: "",
+      contract_years: contract_years.reverse(),
       contract_year_start: "",
       contract_month_start: "",
       contract_year_end: "",
@@ -314,6 +315,9 @@ export default {
       } else {
         return cities[this.state];
       }
+    },
+    submitButton() {
+      return this.edit ? "editar" : "crear";
     }
   },
   methods: {

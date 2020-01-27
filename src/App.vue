@@ -40,7 +40,19 @@
 
         <v-list-item link>
           <v-list-item-action>
-            <v-icon>mdi-account-plus</v-icon>
+            <v-icon>mdi-account-multiple-outline</v-icon>
+          </v-list-item-action>
+
+          <v-list-item-content>
+            <v-list-item-title>
+              <router-link to="/amigos">Amigos</router-link>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-account-plus-outline</v-icon>
           </v-list-item-action>
 
           <v-list-item-content>
