@@ -1,5 +1,5 @@
 <template>
-  <RenderForm :type="'social'" :show_contract="false" />
+  <RenderForm :collection="'socials'" :show_contract="false" />
 </template>
 
 <script>

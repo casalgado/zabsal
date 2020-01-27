@@ -1,11 +1,11 @@
 <template>
-  <RenderForm :collection="'clients'" :show_contract="true" />
+  <RenderForm :collection="'family'" :show_contract="false" />
 </template>
 
 <script>
 import RenderForm from "./RenderForm";
 export default {
-  name: "Client",
+  name: "Family",
   components: { RenderForm },
   data() {
     return {};

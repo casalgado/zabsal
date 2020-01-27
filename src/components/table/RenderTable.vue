@@ -17,6 +17,7 @@
         <v-card class="pa-5" outlined tile>
           <ContactButtons v-if="this.show_contact_buttons" />
           <v-btn v-if="add_button" class="localbtn" @click="add">agregar</v-btn>
+          <v-btn v-if="this.show_edit_button" class="localbtn" @click="edit">editar</v-btn>
           <!-- <div v-for="item in this.selected" :key="item.id">
             <div v-for="(value, name) in item" :key="name">
               <p>
@@ -50,7 +51,7 @@ export default {
   components: { ContactButtons },
   props: {
     table: Object,
-    type: String
+    collection: String
   },
   data() {
     return {
@@ -64,13 +65,16 @@ export default {
       return this.$store.state.active;
     },
     add_button() {
-      return this.type == "family" || this.type == "social";
+      return this.collection == "family" || this.collection == "socials";
     },
     detail() {
       return this.selected;
     },
     show_contact_buttons() {
-      return this.selected.length != "0" && this.type == "client";
+      return this.selected.length != "0" && this.collection == "clients";
+    },
+    show_edit_button() {
+      return this.selected.length != "0";
     }
   },
   methods: {
@@ -79,7 +83,12 @@ export default {
         name: "crear_social",
         params: { id: this.active }
       });
-      // this.$router.push({ path: `/sociales/${this.active}/crear` });
+    },
+    edit: function() {
+      this.$router.push({
+        name: "editar",
+        query: { collection: this.collection, id: this.selected[0].id }
+      });
     }
   },
   watch: {

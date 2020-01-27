@@ -41,11 +41,31 @@ export function fetchAll(collection) {
 	});
 }
 
-export function fetchById(collection, id) {
+export function fetchByClientId(collection, id) {
 	return new Promise(function(resolve) {
 		db
 			.collection(`${collection}`)
 			.where('client_id', '==', parseInt(id))
+			.get()
+			.then((snapshot) => {
+				let objects = [];
+				snapshot.forEach((doc) => {
+					objects.push(doc.data());
+				});
+				console.log(id);
+				resolve(objects);
+			})
+			.catch((err) => {
+				console.log('Error getting documents', err);
+			});
+	});
+}
+
+export function fetchById(collection, id) {
+	return new Promise(function(resolve) {
+		db
+			.collection(`${collection}`)
+			.where('id', '==', parseInt(id))
 			.get()
 			.then((snapshot) => {
 				let objects = [];

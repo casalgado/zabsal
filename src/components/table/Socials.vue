@@ -1,10 +1,10 @@
 <template>
-  <RenderTable :table="this.table" :type="'social'" />
+  <RenderTable :table="this.table" :collection="'socials'" />
 </template>
 
 <script>
 import { mapState } from "vuex";
-import { fetchById } from "../../firebase";
+import { fetchByClientId } from "../../firebase";
 import RenderTable from "./RenderTable";
 import { getClient } from "../../firebase";
 
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     getItems: function() {
-      fetchById("socials", this.id).then(e => {
+      fetchByClientId("socials", this.id).then(e => {
         this.table.items = JSON.parse(JSON.stringify(e));
       });
     }

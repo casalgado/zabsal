@@ -1,5 +1,5 @@
 <template>
-  <RenderTable :table="this.table" :type="'client'" />
+  <RenderTable :table="this.table" :collection="'clients'" />
 </template>
 
 <script>

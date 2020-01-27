@@ -49,6 +49,11 @@ const routes = [
 				path      : '/crear/amigo',
 				name      : 'crear_amigo',
 				component : () => import('../components/form/Friend.vue')
+			},
+			{
+				path      : '/editar',
+				name      : 'editar',
+				component : () => import('../components/form/Edit.vue')
 			}
 		]
 	}

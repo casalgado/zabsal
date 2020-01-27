@@ -222,12 +222,14 @@ import {
 } from "./options/address";
 import { days, months, years } from "./options/dates";
 import { education_levels, vehicles, job_positions } from "./options/personal";
-import { clients } from "../../firebase";
+import { db, fetchById } from "../../firebase";
 export default {
   name: "RenderForm",
   props: {
-    type: String,
-    show_contract: Boolean
+    collection: String,
+    show_contract: Boolean,
+    edit: Boolean,
+    id: String
   },
   data() {
     return {
@@ -316,10 +318,51 @@ export default {
   },
   methods: {
     submit() {
+      let collection = this.collection;
       let id_string = this.form_object.id;
       this.form_object.id = parseInt(this.form_object.id);
-      console.log(this.form_object);
-      console.log(clients.doc(id_string));
+      this.form_object.client_id = this.$store.state.active;
+      alert("submitted");
+      db.collection(collection)
+        .doc(id_string)
+        .set(this.form_object);
+    },
+    update() {},
+    fillIn(obj) {
+      this.first_names = obj.nombres;
+      this.last_names = obj.apellidos;
+      (this.id_number = obj.id),
+        (this.day_of_birth = obj.diacumple),
+        (this.month_of_birth = obj.mescumple),
+        (this.year_of_birth = obj.anocumple),
+        (this.state = obj.departamento),
+        (this.city = obj.ciudad),
+        (this.district = obj.localidad),
+        (this.road_type = obj.tipo_de_via),
+        (this.road_number_one = obj.num_via_principal),
+        (this.road_variants_one = obj.var_via_principal),
+        (this.road_variants_ext_one = ""),
+        (this.road_number_two = obj.num_via_alterna),
+        (this.road_variants_two = obj.var_via_alterna),
+        (this.road_variants_ext_two = ""),
+        (this.plaque_number = obj.num_placa),
+        (this.vehicle = obj.vehiculo),
+        (this.education = obj.educacion),
+        (this.job_position = obj.cargo),
+        (this.company = obj.empresa),
+        (this.salary = obj.salario),
+        (this.contract_year_start = obj.a_i_contrato),
+        (this.contract_month_start = obj.m_i_contrato),
+        (this.contract_year_end = obj.a_f_contrato),
+        (this.contract_month_end = obj.m_f_contrato),
+        (this.client_i = obj.client_id);
+    }
+  },
+  mounted() {
+    if (this.edit) {
+      fetchById(this.collection, this.id).then(e => {
+        this.fillIn(e[0]);
+      });
     }
   }
 };
