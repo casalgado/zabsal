@@ -11,7 +11,7 @@
           outlined
           tile
         >
-          <p>cumpleaños {{ thisMonth }}</p>
+          <p>Los cumpleaños {{ thisMonth }}</p>
           <div
             v-for="client in this.birthdays"
             :key="client.id"
