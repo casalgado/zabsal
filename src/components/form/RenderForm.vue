@@ -327,6 +327,9 @@ export default {
       this.form_object.id = parseInt(this.form_object.id);
       this.form_object.client_id = this.$store.state.active;
       alert("submitted");
+
+      // form validation here.
+
       db.collection(collection)
         .doc(id_string)
         .set(this.form_object);
