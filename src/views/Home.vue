@@ -6,10 +6,6 @@
 export default {
   name: "Home",
   components: {},
-  mounted() {
-    // if (this.$route.path == "/") {
-    //   this.$router.push({ name: "dashboard" });
-    // }
-  }
+  mounted() {}
 };
 </script>
